@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        _birdSprite.color = Color.green;
         UpdateScoreText();
         _gameOverUI.enabled = false;
     }
@@ -47,14 +49,11 @@ public class UIManager : MonoBehaviour
     {
         _gameOverUI.enabled = true;
         _birdSprite.color = Color.red;
-        StopScripts();
+        _birdScript.IsAlive = false;
     }
 
-
-    void StopScripts()
+    public void RestartGame()
     {
-        PipeMover.IsGameOver = true;
-        _birdScript.enabled = false;
-        _spawner.IsGameOver = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

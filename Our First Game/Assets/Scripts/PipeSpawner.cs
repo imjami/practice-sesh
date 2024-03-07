@@ -22,7 +22,6 @@ public class PipeSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsGameOver) return;
         if (timer < spawnDelay)
         {
             timer += Time.deltaTime;

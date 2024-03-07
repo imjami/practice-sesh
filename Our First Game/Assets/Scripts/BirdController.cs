@@ -5,10 +5,20 @@ using UnityEngine;
 public class BirdController : MonoBehaviour
 {
     [SerializeField] float _flapStrength;
+    
+
+    public bool IsAlive
+    {
+        get { return _isAlive; }
+        set { _isAlive = value; }
+    }
+
+    bool _isAlive = true;
 
     UIManager manager;
     Rigidbody2D rb;
     bool _isJumping;
+    
 
     void Awake()
     {
@@ -29,7 +39,7 @@ public class BirdController : MonoBehaviour
 
     void JumpInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) _isJumping = true;
+        if (Input.GetKeyDown(KeyCode.Space) && IsAlive) _isJumping = true;
     }
 
     void Jump()
